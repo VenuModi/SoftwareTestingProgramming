@@ -22,7 +22,7 @@ public class BugHunt {
         int apples = 5;
         int bananas = 2;
 
-        //System.out.println("Fruit: " + apples + bananas);(This give the output as 52)
+        //System.out.println("Fruit: " + apples + bananas);(This gives the output as 52)
         System.out.println("Fruit: " + (apples + bananas)); // correct way of getting the desired output
         System.out.println("Name: " + name);
         System.out.println(age == 25); //Prints true as == is a boolean operator

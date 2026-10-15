@@ -30,7 +30,9 @@ public class PersonCard {
         //int x= 2022;
         //double y = 185000;
         //boolean b = true;
-        /*This part of the code is difficult for any developer to undersatnd.Now One can name the variables in a way that people seeing the code can uderstand.*/
+        /*This part of the code is difficult for any developer to undersatnd.
+        Now One can name the variables in a way that people seeing the code can uderstand.
+        */
 
         /*Byt namn på variablerna så att någon annan programmerare förstår dem utan förklaring. Ett möjligt resultat:*/
         String carBrand = "Volvo";
