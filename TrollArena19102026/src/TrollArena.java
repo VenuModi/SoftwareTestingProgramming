@@ -68,9 +68,9 @@ public class TrollArena {
         if (hero.isAlive()){
             System.out.println("\nCONGRATULATIONS!");
             System.out.println(hero.getName() + " WINS!");
-            System.out.println("All enemies have been defeated!");
-            System.out.println("GAME OVER!");
         }
+        System.out.println("All enemies have been defeated!");
+        System.out.println("GAME OVER!");
 
         scanner.close();
 

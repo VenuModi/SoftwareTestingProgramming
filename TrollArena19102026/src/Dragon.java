@@ -14,7 +14,7 @@ public class Dragon extends Character {
 
         //System.out.println(name + " breathes fire for 15 damages!");
 
-        int damage = random.nextInt(21) + 10; //Dragaon breathes fire for upto 30damages.
+        int damage = random.nextInt(21) + 10; //Dragaon breathes fire for upto 20damages.
         // Range from 20 to 31 contains 21 possible integers.
 
         System.out.println(name + " breathes out fire for " + damage + " damage!");
