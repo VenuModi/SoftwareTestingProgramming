@@ -4,6 +4,8 @@ public class Game {
 
     public static void main(String[] args) {
 
+        testMonsterHP();
+
         Scanner scanner = new Scanner(System.in);
         /*Outside while loop for keeping track of points throughout the game*/
         Arena arena = new Arena();
@@ -61,5 +63,24 @@ public class Game {
             }
         }
         scanner.close();
+    }
+
+    private static void testMonsterHP() {
+
+        Monster dragon = new Dragon();
+
+        System.out.println(dragon.getHp()); //100HP
+
+        dragon.takeDamage(20);
+
+        System.out.println(dragon.getHp()); //80HP
+
+        dragon.takeDamage(200);
+
+        System.out.println(dragon.getHp()); //0
+
+        dragon.resetHp();
+
+        System.out.println(dragon.getHp());
     }
 }
