@@ -133,7 +133,8 @@ public class Arena {
             int damage;
 
             /*Random chance for special attack
-            * Monster should support special attacks & the random value must be 0*/
+            * Monster should support special attacks & the random value must be 0
+            */
             if (attacker instanceof SpecialAttack && random.nextInt(4) == 0){
 
                 SpecialAttack specialattack = (SpecialAttack) attacker;
@@ -154,7 +155,8 @@ public class Arena {
             }
 
             /*Spicy: chance to jump ahead in the queue
-            * Give monster an extra run*/
+            * Give monster an extra run
+            */
             if (random.nextInt(5) == 0){
                 System.out.println(attacker.getName() + " gets an extra turn!");
 

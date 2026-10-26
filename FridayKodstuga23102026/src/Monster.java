@@ -1,7 +1,7 @@
 public abstract class Monster {
 
 
-    //allows subclasses to directly access name & hp
+    //allow subclasses to directly access name & hp
     protected String name;
     protected int hp;
 
