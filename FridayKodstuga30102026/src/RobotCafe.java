@@ -3,6 +3,9 @@ import java.util.Scanner;
 
 public class RobotCafe {
 
+    private static final int MIN_ROBOT_SECRET_CODE = 1000;
+    private static final int MAX_ROBOT_SECRET_CODE = 9999;
+
     public static void main(String[] args) {
 
         String[] menuItems = {
@@ -22,55 +25,26 @@ public class RobotCafe {
 
             printMenu(menuItems);
 
-            boolean validInput = false;
-
-            while (!validInput) {
-
-                try {
-                    System.out.print("Choose your order by selecting the number from (1 - 6)");
-
-                    int choice = scanner.nextInt();
+                    int choice = readMenuchoice(scanner);
 
                     if (choice == 0){
 
                         System.out.println("Thank you for visiting ROBOT CAFE!");
 
                         isRunning = false;
-                        validInput = true;
+
                     } else if(choice >= 1 && choice <= menuItems.length) {
 
-                        System.out.println("You have selected number - " + choice + " " + menuItems[choice - 1]);
+                       processOrder(scanner, menuItems[choice - 1]);
 
-                        System.out.print("Enter your secret Robot Code: ");
-
-                        int robotCode = scanner.nextInt();
-
-                        try{
-                            validateRobotCode(robotCode);
-                        }catch (IllegalArgumentException e){
-                            System.out.println(e.getMessage());
-                        }
-
-                        validInput = true;
-
-                    } else {
+                        }else {
                         System.out.println("Invalid menu choice! Try again.");
                     }
 
-                } catch (InputMismatchException e) {
-
-                    System.out.println("Invalid input!! Please enter a whole number from (1 - 6).");
-
-                    scanner.nextLine();
-
                 }
+            scanner.close();
 
             }
-        }
-
-
-        scanner.close();
-    }
 
     public static void printMenu(String[] menuItems){
 
@@ -86,11 +60,41 @@ public class RobotCafe {
 
     public static void validateRobotCode(int code){
 
-        if (code < 1000 || code > 9999){
+        if (code < MIN_ROBOT_SECRET_CODE || code > MAX_ROBOT_SECRET_CODE){
             throw new IllegalArgumentException("Invalid Robot code!! The code must contain 4 digits.");
         }
 
         System.out.println("Robot code accepted!");
 
+    }
+
+    public static int readMenuchoice(Scanner scanner){
+        while(true){
+            try {
+                System.out.print("Chhose your order by selecting a number from (1-6): ");
+                return scanner.nextInt();
+            }catch (InputMismatchException e){
+                System.out.println("Invalid input! Please enter a whole number from (1-6)");
+                scanner.nextLine();
+            }
+        }
+    }
+
+    public static void processOrder(Scanner scanner, String menuItem){
+
+        System.out.println("You ordered: " + menuItem);
+
+        System.out.print("Enter your secret Robot Code: ");
+
+        try {
+            int robotCode = scanner.nextInt();
+
+            validateRobotCode(robotCode);
+        }catch (InputMismatchException e){
+
+            System.out.println("Invalid Input! Please enter a number: ");
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 }
