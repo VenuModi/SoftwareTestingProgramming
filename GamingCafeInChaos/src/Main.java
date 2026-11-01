@@ -6,17 +6,28 @@ public class Main {
 
         GameCafe gameCafe = new GameCafe();
 
-        GameCafe emptyCafe = new GameCafe();
+//        GameCafe emptyCafe = new GameCafe();
 
        gameCafe.registerPlayer("Venu");
        gameCafe.registerPlayer("Ramta");
        gameCafe.registerPlayer("Ouras");
-       gameCafe.registerPlayer("Rekha");
-       gameCafe.registerPlayer("venu");
+
+       gameCafe.addToQueue("Venu");
+       gameCafe.addToQueue("Ramta");
+       gameCafe.addToQueue("Ouras");
+
+       gameCafe.updateScore("Venu", 100);
+       gameCafe.updateScore("Ramta", 85);
+       gameCafe.updateScore("Ouras", 100);
+       gameCafe.addPoints("Venu", 100);
+       gameCafe.addPoints("Venu", 150);
+
 
         gameCafe.showPlayers();
-
-        emptyCafe.showPlayers();
+        //emptyCafe.showPlayers();
+        gameCafe.nextPlayer();
+        gameCafe.showQueue();
+        gameCafe.showScores();
 
     }
 }
