@@ -56,6 +56,9 @@ public class RobotCafe {
         }
 
         System.out.println("0. Exit");
+
+
+        System.out.println();
     }
 
     public static void validateRobotCode(int code){
