@@ -49,34 +49,55 @@ public class DiceGame {
         System.out.println("Enter your name: ");
         String playerName = scanner.nextLine();
 
+        //Create the player
         Player player = new Player(playerName);
         player.addDie(sides);
 
         System.out.println("\nWelcome " + player.getPlayerName() + "!");
 
         //Play the game
-        for (int i = 1; i <= numberOfRounds; i++) {
+        playRounds(player, scanner, numberOfRounds, sides);
 
-            System.out.println("\n------ Round - " + i + " ------");
 
-            int guessOfThePlayer = 0;
+        System.out.println("\n===== GAME OVER =====");
+        System.out.println("Player: " + player.getPlayerName());
+        System.out.println("Final score: " + player.getScore());
 
-            //Ask for a valid guess
-            while (guessOfThePlayer < 1 || guessOfThePlayer > sides) {
+        scanner.close();
+    }
 
-                try{
-                    System.out.println("Guess a number between 1 and " + sides + ": ");
+    private static int getValidGuess(Scanner scanner, int sides){
 
-                    guessOfThePlayer = scanner.nextInt();
+        int guessOfThePlayer = 0;
 
-                    if (guessOfThePlayer < 1 || guessOfThePlayer > sides) {
-                        System.out.println("Your guess is outside the range!");
-                    }
-                }catch (InputMismatchException e){
-                    System.out.println("ERROR! Please enter a whole number.");
-                    scanner.nextLine();
+        //Ask for a valid guess
+        while (guessOfThePlayer < 1 || guessOfThePlayer > sides) {
+
+            try{
+                System.out.println("Guess a number between 1 and " + sides + ": ");
+                guessOfThePlayer = scanner.nextInt();
+
+                if (guessOfThePlayer < 1 || guessOfThePlayer > sides) {
+                    System.out.println("Your guess is outside the range!");
                 }
+            }catch (InputMismatchException e){
+                System.out.println("ERROR! Please enter a whole number.");
+                scanner.nextLine();
             }
+        }
+        return guessOfThePlayer;
+
+    }
+
+    //Play rounds
+    private static void playRounds(Player player, Scanner scanner, int numberOfRounds, int sides){
+
+        for (int rounds = 1; rounds <= numberOfRounds; rounds++) {
+
+            System.out.println("\n------ Round - " + rounds + " ------");
+
+            int guessOfThePlayer = getValidGuess(scanner, sides);
+
             player.rollDice();
 
             int result = player.getDieValue();
@@ -95,10 +116,5 @@ public class DiceGame {
 
         }
 
-        System.out.println("\n===== GAME OVER =====");
-        System.out.println("Player: " + player.getPlayerName());
-        System.out.println("Final score: " + player.getScore());
-
-        scanner.close();
     }
 }
