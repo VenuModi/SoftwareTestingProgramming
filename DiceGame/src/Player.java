@@ -1,11 +1,11 @@
 public class Player {
 
-    private String playerName;
+    private final String playerName;
     private int score;
-    private Die dice;
+    private Die die;
 
 
-    Player(String playerName)
+    public Player(String playerName)
     {
         this.playerName = playerName;
         this.score =0;
@@ -27,15 +27,15 @@ public class Player {
 
     public void addDie(int numberOfSides)
     {
-        dice = new Die(numberOfSides);
+        die = new Die(numberOfSides);
     }
 
     public void rollDice(){
-        dice.roll();
+        die.roll();
     }
 
     public int getDieValue(){
-        return dice.getCurrentValue();
+        return die.getCurrentValue();
     }
     public void increaseScore(){
         score++;
