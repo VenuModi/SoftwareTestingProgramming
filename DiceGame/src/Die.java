@@ -2,12 +2,16 @@ import java.util.Random;
 
 public class Die {
 
-    private int numberOfSides;
+    private final int numberOfSides;
     private int currentValue;
-    private Random random;
+    private final Random random;
 
     //Constructor
-    Die(int numberOfSides){
+    public Die(int numberOfSides){
+
+        if (numberOfSides < 2){
+            throw new IllegalArgumentException("A die must have at least 2 sides.");//Defensive programming just in case if someone writes Die die = new Die(0);
+        }
 
         this.numberOfSides = numberOfSides;
         this.currentValue = 0;
