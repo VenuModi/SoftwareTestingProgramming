@@ -6,12 +6,12 @@ public class MultiPlayerGame {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void startGame(Scanner scanner) {
 
-        System.out.println("===== MULTIPLAYER DICE GAME! =====");
+        System.out.println("===== MULTIPLAYER DICE GAME =====");
 
         //Create players and give them dice
-        ArrayList<Player> players = initialize();
+        ArrayList<Player> players = initialize(scanner);
 
         //Ask for number of rounds
         int numberOfRounds = 0;
@@ -26,10 +26,12 @@ public class MultiPlayerGame {
                     System.out.println("Rounds must be greater than 0.");
                 }
             }catch (InputMismatchException e){
-                System.out.println("Please enter a whole number.");
+                System.out.println("ERROR! Please enter a whole number.");
                 scanner.nextLine();
             }
         }
+        //Clear leftover Enter from number of rounds
+        scanner.nextLine();
 
         //Play rounds
         for (int round = 1; round <= numberOfRounds; round++) {
@@ -37,6 +39,14 @@ public class MultiPlayerGame {
             System.out.println("\n----- Round - " + round + " -----");
 
             takeTurn(players);
+
+            //Pause between rounds
+            if (round < numberOfRounds){
+
+                System.out.println("\nPress Enter to continue to the next round...");
+
+                scanner.nextLine();
+            }
         }
 
         //Find the winner or winners
@@ -54,11 +64,10 @@ public class MultiPlayerGame {
             System.out.println(winner.getPlayerName() +
                     " with " + winner.getScore() + " points!");
         }
-        scanner.close();
     }
 
     //Create players and dice
-    private static ArrayList<Player> initialize(){
+    private static ArrayList<Player> initialize(Scanner scanner){
 
         ArrayList<Player> players = new ArrayList<>();
 
@@ -76,7 +85,7 @@ public class MultiPlayerGame {
                     System.out.println("You need atleast 2 players.");
                 }
             }catch (InputMismatchException e){
-                System.out.println("Please enter a whole number.");
+                System.out.println("ERROR!! Please enter a whole number.");
                 scanner.nextLine();
             }
         }
@@ -92,7 +101,7 @@ public class MultiPlayerGame {
                     System.out.println("Each player needs atleast 1 die.");
                 }
             }catch (InputMismatchException e){
-                System.out.println("Please enter a whole number.");
+                System.out.println("ERROR!! Please enter a whole number.");
                 scanner.nextLine();
             }
         }
@@ -150,7 +159,7 @@ public class MultiPlayerGame {
                 roundTotal += value;
 
                 if (!diceResults.isEmpty()){
-                    diceResults += ", ";//Adss commas between dice values without adding a comma before the first value.
+                    diceResults += ", ";//Adds commas between dice values without adding a comma before the first value.
                 }
                 diceResults += value;
             }
