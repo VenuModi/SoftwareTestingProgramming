@@ -117,7 +117,7 @@ public class MultiPlayerGame {
             Player player = new Player(name);
 
             //Give dice to each player
-            for (int j = 0; j <= numberOfDice ; j++) {
+            for (int j = 1; j <= numberOfDice ; j++) {
                 player.addDie(6);
 
             }
@@ -130,27 +130,37 @@ public class MultiPlayerGame {
     //Every player rolls their dice
     private static void takeTurn(ArrayList<Player> players){
 
-        for (Player player : players){
 
-            System.out.println("\n" + player.getPlayerName() + "'s turn!");
+
+            System.out.printf("%-12s %-15s %-10s %-10s%n",
+                    "Player", "Dice Rolls", "Round", "Total");
+
+            System.out.println("---------------------------------------------------------------------");
+        for (Player player : players){
 
             player.rollDice();
 
             int roundTotal = 0;
+            String diceResults = "";
 
             for (Die die : player.getDice()){
 
                 int value = die.getCurrentValue();
 
-                System.out.println("Die rolled: " + value);
-
                 roundTotal += value;
-            }
 
+                if (!diceResults.isEmpty()){
+                    diceResults += ", ";//Adss commas between dice values without adding a comma before the first value.
+                }
+                diceResults += value;
+            }
             player.setScore(player.getScore() + roundTotal);
 
-            System.out.println("Round points: " + roundTotal);
-            System.out.println("Total socre: " + player.getScore());
+            System.out.printf("%-12s %-15s %-10d %-10d%n",
+                    player.getPlayerName(),
+                    diceResults,
+                    roundTotal,
+                    player.getScore());
         }
     }
 
