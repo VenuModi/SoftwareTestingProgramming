@@ -3,11 +3,9 @@ import java.util.Scanner;
 
 public class DiceGame {
 
-    public static void main(String[] args) {
+    public static void startGame(Scanner scanner) {
 
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("===== WELCOME TO THE DICE GAME! =====");
+        System.out.println("\n===== SINGLE PLAYER DICE GAME =====");
 
         int numberOfRounds = 0;
         int sides = 0;
@@ -43,6 +41,7 @@ public class DiceGame {
             }
         }
 
+        //Clear leftover Enter
         scanner.nextLine();
 
         //Ask player's name
@@ -63,7 +62,6 @@ public class DiceGame {
         System.out.println("Player: " + player.getPlayerName());
         System.out.println("Final score: " + player.getScore());
 
-        scanner.close();
     }
 
     private static int getValidGuess(Scanner scanner, int sides){
@@ -113,6 +111,17 @@ public class DiceGame {
             }
 
             System.out.println("Current score: " + player.getScore());
+
+            //Clear Enter left by nextLine()
+            scanner.nextLine();
+
+            //Pause between rounds
+            if (rounds < numberOfRounds){
+
+                System.out.println("\nPress Enter to continue to the next round...");
+
+                scanner.nextLine();
+            }
 
         }
 
