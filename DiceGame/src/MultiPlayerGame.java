@@ -159,7 +159,7 @@ public class MultiPlayerGame {
                 roundTotal += value;
 
                 if (!diceResults.isEmpty()){
-                    diceResults += ", ";//Adds commas between dice values without adding a comma before the first value.
+                    diceResults += ", ";//Add commas between dice values without adding a comma before the first value.
                 }
                 diceResults += value;
             }
