@@ -53,8 +53,6 @@ public class DiceGame {
         Player player = new Player(playerName);
         player.addDie(sides);
 
-        System.out.println("\nWelcome " + player.getPlayerName() + "!");
-
         //Play the game
         playRounds(player, scanner, numberOfRounds, sides);
 

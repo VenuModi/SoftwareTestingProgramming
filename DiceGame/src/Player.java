@@ -5,19 +5,16 @@ public class Player {
     private Die die;
 
 
-    public Player(String playerName)
-    {
+    public Player(String playerName) {
         this.playerName = playerName;
         this.score =0;
     }
 
-    public int getScore()
-    {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(int score)
-    {
+    public void setScore(int score) {
         this.score = score;
     }
 
@@ -28,6 +25,8 @@ public class Player {
     public void addDie(int numberOfSides)
     {
         die = new Die(numberOfSides);
+        System.out.println("\nWelcome " + getPlayerName() + "!");
+        System.out.println("\n" + getPlayerName() + " - You have chosen to play with " + die.getNumberOfSides() + " sided die.");
     }
 
     public void rollDice(){
@@ -38,7 +37,8 @@ public class Player {
         return die.getCurrentValue();
     }
     public void increaseScore(){
-        score++;
+        setScore(this.score + 1);
+        //score++;
 
     }
 }
