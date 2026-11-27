@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class MultiPlayerGame {
 
-    private static Scanner scanner = new Scanner(System.in);
+    //private static Scanner scanner = new Scanner(System.in);
 
     public static void startGame(Scanner scanner) {
 
