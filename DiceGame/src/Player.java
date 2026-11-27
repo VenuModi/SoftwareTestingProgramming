@@ -8,18 +8,13 @@ public class Player {
     //private Die die;//Single player single die
 
 
-    //Constructor
     public Player(String playerName) {
         this.playerName = playerName;
         this.score =0;
         this.dice = new ArrayList<>();//Initialize the ArrayList
     }
 
-    public String getPlayerName(){
-        return playerName;
-    }
-
-    public int getScore(){
+    public int getScore() {
         return score;
     }
 
@@ -27,9 +22,15 @@ public class Player {
         this.score = score;
     }
 
-    //Add a new die to the player
-    public void addDie(int numberOfSides){
-        dice.add(new Die(numberOfSides));//Add dice to the list
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void addDie(int numberOfSides)
+    {
+        die = new Die(numberOfSides);
+        System.out.println("\nWelcome " + getPlayerName() + "!");
+        System.out.println("\n" + getPlayerName() + " - You have chosen to play with " + die.getNumberOfSides() + " sided die.");
     }
 
     //Roll all the dice belonging to the player
@@ -52,7 +53,8 @@ public class Player {
 
     //Increase the score by one
     public void increaseScore(){
-        score++;
+        setScore(this.score + 1);
+        //score++;
 
     }
 }
