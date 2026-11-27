@@ -82,7 +82,54 @@ public class Game {
         System.out.println("0. Quit game");
 
         System.out.print("Enter your choice: ");
+    }
 
+    private void exploreRoom() {
+
+        while (player.isAlive()) {
+
+            System.out.println("\n====== CHOOSE A ROOM ======");
+
+            for (int i = 0; i < rooms.size(); i++) {
+
+                Room room = rooms.get(i);
+
+                System.out.println((i + 1) + ". "
+                + room.getName()
+                + ((room.isCompleted())
+                ? "[Completed]" : "[Available]"));
+            }
+
+            System.out.println("0. Return to hall");
+
+            System.out.println("Eter your choice: ");
+
+            int choice;
+
+            try {
+                choice = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+
+                System.out.println("Please enter a number.");
+
+                continue;
+            }
+
+            if (choice == 0) {
+                return;
+            }
+
+            if (choice < 1 || choice > rooms.size()) {
+
+                System.out.println("Invalid room number.");
+
+                continue;
+            }
+
+            rooms.get(choice - 1).enter(player,scanner);
+
+            return;
+        }
     }
 
 }
